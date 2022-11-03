@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+{% if latest_question_list %}
+
+<div class="info" >
+  <h3>빅데이터 웹프로그래밍 중간과제</h3>
+</div>
+<div class="box" >
+<h2>Question list</h2>
+    <ul>
+    {% for question in latest_question_list %}
+        <li><h3><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></h3></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+</body>
+</html>
